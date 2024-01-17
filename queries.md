@@ -316,3 +316,33 @@ WHERE NAME LIKE 'M%';
 SELECT MAX(SALARY) AS MAXIMUM_SALARY, MIN(SALARY) AS MINIMUM_SALARY
 FROM EMPLOYEE;
 ```
+## Fourth Question
+You can use the same database like before,
+(i) Display the name of all the employees working in north zone.
+```sql
+SELECT NAME
+FROM EMPLOYEE
+WHERE ZONE = 'NORTH';
+```
+(ii) Display the details of all employees in the ascending order of their salaries.
+```sql
+SELECT *
+FROM EMPLOYEE
+ORDER BY SALARY ASC;
+```
+(iii) Display the name, salary and age of all employees whose name contain 'A'.
+```sql
+SELECT NAME, SALARY, AGE
+FROM EMPLOYEE
+WHERE NAME LIKE '%A%';
+```
+(iv) Display the unique zones from the table employee.
+```sql
+SELECT DISTINCT ZONE
+FROM EMPLOYEE;
+```
+
+## Author
+
+- [Sidharth Prabhu](https://www.github.com/Cyber-Zypher)
+
