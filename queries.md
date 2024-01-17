@@ -243,3 +243,76 @@ SELECT NAME
 FROM STUDENTS
 WHERE area IS NULL;
 ```
+## Third Question
+To Create database:
+```sql
+CREATE DATABASE COMPANY;
+USE COMPANY;
+CREATE TABLE EMPLOYEE(SNO INT PRIMARY KEY, NAME VARCHAR(255), SALARY VARCHAR(25), ZONE VARCHAR(20), AGE INT, GRADE VARCHAR(15), DEPT INT);
+INSERT INTO EMPLOYEE(SNO, NAME, SALARY, ZONE, AGE, GRADE, DEPT)
+VALUES
+(1, 'MUKUL', '30000', 'WEST', 28, 'A', 10),
+(2, 'KRITIKA', '35000', 'CENTRE', 30, 'A', 10),
+(3, 'NAVEEN', '32000', 'WEST', 40, 'NULL', 20),
+(4, 'UDAY', '38000', 'NORTH', 38, 'C', 30),
+(5, 'NUPUR', '32000', 'EAST', 26, 'NULL', 20),
+(6, 'MOKESH', '37000', 'SOUTH', 28, 'B', 10),
+(7, 'SHELLY', '36000', 'NORTH', 26, 'A', 30);
+```
+The database 'EMPLOYEE' will be like:
+```sql
++-----+---------+--------+--------+------+-------+------+
+| SNO | NAME    | SALARY | ZONE   | AGE  | GRADE | DEPT |
++-----+---------+--------+--------+------+-------+------+
+|   1 | MUKUL   | 30000  | WEST   |   28 | A     |   10 |
+|   2 | KRITIKA | 35000  | CENTRE |   30 | A     |   10 |
+|   3 | NAVEEN  | 32000  | WEST   |   40 | NULL  |   20 |
+|   4 | UDAY    | 38000  | NORTH  |   38 | C     |   30 |
+|   5 | NUPUR   | 32000  | EAST   |   26 | NULL  |   20 |
+|   6 | MOKESH  | 37000  | SOUTH  |   28 | B     |   10 |
+|   7 | SHELLY  | 36000  | NORTH  |   26 | A     |   30 |
++-----+---------+--------+--------+------+-------+------+
+```
+Creating the next database (DEPARTMENT)
+```sql
+CREATE TABLE DEPARTMENT(DEPT INT, DNAME VARCHAR(10), MIN_SAL VARCHAR(20), MAX_SAL VARCHAR(20),
+HOD INT);
+INSERT INTO DEPARTMENT(DEPT, DNAME, MIN_SAL, MAX_SAL, HOD)
+VALUES
+(10, 'SALES', '25000', '32000', 1),
+(20, 'FINANCE', '30000', '50000', 5),
+(30, 'ADMIN', '25000', '40000', 7);
+```
+The database 'DEPARTMENT' will be like:
+```sql
++------+---------+---------+---------+------+
+| DEPT | DNAME   | MIN_SAL | MAX_SAL | HOD  |
++------+---------+---------+---------+------+
+|   10 | SALES   | 25000   | 32000   |    1 |
+|   20 | FINANCE | 30000   | 50000   |    5 |
+|   30 | ADMIN   | 25000   | 40000   |    7 |
++------+---------+---------+---------+------+
+```
+(i) Display the name department of all employees from the EMPLOYEE and DEPARTMENT table.
+```sql
+SELECT e.NAME AS EMPLOYEE_NAME, d.DNAME AS DEPARTMENT_NAME
+FROM EMPLOYEE e
+JOIN DEPARTMENT d ON e.DEPT = d.DEPT;
+```
+(ii) Display the number of employees from each ZONE
+```sql
+SELECT ZONE, COUNT(*) AS EMPLOYEE_COUNT
+FROM EMPLOYEE
+GROUP BY ZONE;
+```
+(iii) Display the name, salary, and age of all the employees whose name start with 'M'.
+```sql
+SELECT NAME, SALARY, AGE
+FROM EMPLOYEE
+WHERE NAME LIKE 'M%';
+```
+(iv) Display the maximum salary and minimum salary from EMPLOYEE.
+```sql
+SELECT MAX(SALARY) AS MAXIMUM_SALARY, MIN(SALARY) AS MINIMUM_SALARY
+FROM EMPLOYEE;
+```
